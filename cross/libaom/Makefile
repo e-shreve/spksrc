@@ -1,10 +1,10 @@
 PKG_NAME = libaom
-PKG_VERS = v1.0.0-990~4b8a01d4f
+PKG_VERS = v2.0.0-rc1
 PKG_EXT = tar.gz
 PKG_DOWNLOAD_METHOD = git
-PKG_GIT_HASH = 4b8a01d4febdb331f825a8c69bc9974700f7efb4
-# Tag v1.0.0-errata1: add4b15580e410c00c927ee366fa65545045a5d9
-# Error in generated pkgconfig still at 0.1.0
+PKG_GIT_HASH = 52fcf205565d5530773933cf38eb4c45357b6ad1
+# Tag v2.0.0-rc1: 52fcf205565d5530773933cf38eb4c45357b6ad1
+# Tag v1.0.0-errata1-avif: 4eb1e7795b9700d532af38a2d9489458a8038233
 PKG_DIST_SITE = https://aomedia.googlesource.com/aom
 PKG_DIST_FILE = $(PKG_NAME)-git$(PKG_GIT_HASH).$(PKG_EXT)
 PKG_DIR = $(PKG_NAME)-git$(PKG_GIT_HASH)
@@ -46,13 +46,11 @@ endif
 ifeq ($(findstring $(ARCH), $(ARM7_ARCHES)),$(ARCH))
 CMAKE_ARGS += -DCMAKE_CXX_FLAGS=-fPIC -DCROSS_COMPILE_ARM=ON -DENABLE_ASSEMBLY=OFF
 CMAKE_ARGS += -DCMAKE_SYSTEM_PROCESSOR=armv7 -DAOM_TARGET_CPU=arm
-#CMAKE_ARGS += -DCMAKE_TOOLCHAIN_FILE=$(WORK_DIR)/$(PKG_DIR)/build/cmake/toolchains/armv7-linux-gcc.cmake
 endif
 
 ifeq ($(findstring $(ARCH), $(ARM8_ARCHES)),$(ARCH))
 CMAKE_ARGS += -DCMAKE_CXX_FLAGS=-fPIC -DCROSS_COMPILE_ARM=ON -DENABLE_ASSEMBLY=OFF
 CMAKE_ARGS += -DCMAKE_SYSTEM_PROCESSOR=aarch64 -DAOM_TARGET_CPU=arm64
-#CMAKE_ARGS += -DCMAKE_TOOLCHAIN_FILE=$(WORK_DIR)/$(PKG_DIR)/build/cmake/toolchains/arm64-linux-gcc.cmake
 endif
 
 ifeq ($(findstring $(ARCH), $(PPC_ARCHES)),$(ARCH))
@@ -65,7 +63,6 @@ DEPENDS += native/nasm cross/libnuma
 ENV += PATH=$(NASM_PATH):$$PATH
 ENV += AS=$(NASM_PATH)/nasm
 CMAKE_ARGS += -DCMAKE_SYSTEM_PROCESSOR=x86_64 -DAOM_TARGET_CPU=x86_64
-#CMAKE_ARGS += -DCMAKE_TOOLCHAIN_FILE=$(WORK_DIR)/$(PKG_DIR)/build/cmake/toolchains/x86-linux.cmake
 endif
 
 ifeq ($(findstring $(ARCH), $(x86_ARCHES)),$(ARCH))
@@ -74,7 +71,6 @@ ENV += PATH=$(NASM_PATH):$$PATH
 ENV += AS=$(NASM_PATH)/nasm
 CMAKE_ARGS += -DENABLE_ASSEMBLY=OFF -DCMAKE_SYSTEM_PROCESSOR=x86
 CMAKE_ARGS += -DCMAKE_SYSTEM_PROCESSOR=x86 -DAOM_TARGET_CPU=x86
-#CMAKE_ARGS += -DCMAKE_TOOLCHAIN_FILE=$(WORK_DIR)/$(PKG_DIR)/build/cmake/toolchains/x86-linux.cmake
 endif
 
 .PHONY: libaom_custom_configure
