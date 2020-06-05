@@ -7,58 +7,12 @@ jobs:
   timeoutInMinutes: 0
   strategy:
     matrix: 
-      a1:
-        architecure: arch-qoriq-6.1
-      a2:
-        architecure: arch-kvmx64-6.1
-      a3:
-        architecure: arch-armv7-6.1
-      a4:
-        architecure: arch-denverton-6.1
-      a5:
-        architecure: arch-x64-6.1
-      a6:
-        architecure: arch-broadwell-6.1
-      a7:
-        architecure: arch-aarch64-6.1
-      a8:
-        architecure: arch-avoton-6.1
-      a9:
-        architecure: arch-armada38x-6.1
-      a10:
-        architecure: arch-x86-6.1
-      a11:
-        architecure: arch-88f6281-6.1
-      a12:
-        architecure: arch-grantley-6.1
-      a13:
-        architecure: arch-braswell-6.1
-      a14:
-        architecure: arch-comcerto2k-6.1
-      a15:
-        architecure: arch-armadaxp-6.1
-      a16:
-        architecure: arch-hi3535-6.1
-      a17:
-        architecure: arch-dockerx64-6.1
-      a18:
-        architecure: arch-cedarview-6.1
-      a19:
-        architecure: arch-armada375-6.1
-      a20:
-        architecure: arch-rtd1296-6.1
-      a21:
-        architecure: arch-monaco-6.1
-      a22:
-        architecure: arch-apollolake-6.1
-      a23:
-        architecure: arch-bromolow-6.1
-      a24:
-        architecure: arch-alpine-6.1
-      a25:
-        architecure: arch-armada370-6.1
-      a26:
-        architecure: arch-evansport-6.1    
+      architecure: {arch-qoriq-6.1, arch-kvmx64-6.1, arch-armv7-6.1, arch-denverton-6.1, arch-x64-6.1,
+                    arch-broadwell-6.1, arch-aarch64-6.1, arch-avoton-6.1, arch-armada38x-6.1, arch-x86-6.1, 
+                    arch-88f6281-6.1, arch-grantley-6.1, arch-braswell-6.1, arch-comcerto2k-6.1, arch-armadaxp-6.1,
+                    arch-hi3535-6.1, arch-dockerx64-6.1, arch-cedarview-6.1, arch-armada375-6.1, arch-rtd1296-6.1,
+                    arch-monaco-6.1, arch-apollolake-6.1, arch-bromolow-6.1, arch-alpine-6.1, arch-armada370-6.1,
+                    arch-evansport-6.1}
     maxParallel: 10
 
   pool:
