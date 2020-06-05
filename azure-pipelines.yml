@@ -82,15 +82,10 @@ jobs:
       displayName: 'make $(architecure)'
       workingDirectory: spk/urbackup
   
-#    - task: PublishPipelineArtifact@1
-#      inputs:
-#        targetPath: '$(Build.SourcesDirectory)/packages'
-#        artifact: 'Packages$(System.JobPositionInPhase)'
-#        publishLocation: 'pipeline'
- 
+
     - task: GitHubRelease@1
       inputs:
-        gitHubConnection: 'github2'
+        gitHubConnection: 'github'
         repositoryName: 'josef109/spksrc'
         action: 'create'
         target: '$(Build.SourceVersion)'
