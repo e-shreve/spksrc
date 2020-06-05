@@ -90,7 +90,7 @@ jobs:
         action: 'create'
         target: '$(Build.SourceVersion)'
         tagSource: userSpecifiedTag
-        tag: 'urbackup 2.4.12'
+        tag: '2.4.12'
         assets: '$(Build.Repository.LocalPath)/packages/*.spk'
         addChangeLog: false
 
