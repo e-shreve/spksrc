@@ -89,10 +89,10 @@ jobs:
         repositoryName: 'josef109/spksrc'
         action: 'create'
         target: '$(Build.SourceVersion)'
-        tagSource: 'gitTag'
-        tagPattern: '2.4.12'
+        tagSource: userSpecifiedTag
+        tag: 'urbackup 2.4.12'
         assets: '$(Build.Repository.LocalPath)/packages/*.spk'
-        addChangeLog: false'
+        addChangeLog: false
 
 
  
