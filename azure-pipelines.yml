@@ -1,4 +1,7 @@
 # see https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases
+parameters:
+  architectures: ["arch-qoriq-6.1", "arch-kvmx64-6.1", "arch-armv7-6.1"]
+
 jobs:
 
 # Provide a name for the job
@@ -7,32 +10,10 @@ jobs:
   timeoutInMinutes: 0
   strategy:
     matrix: 
-      arch-qoriq-6.1 
-      arch-kvmx64-6.1
-      arch-armv7-6.1
-      arch-denverton-6.1
-      arch-x64-6.1
-      arch-broadwell-6.1 
-      arch-aarch64-6.1 
-      arch-avoton-6.1 
-      arch-armada38x-6.1 
-      arch-x86-6.1 
-      arch-88f6281-6.1 
-      arch-grantley-6.1 
-      arch-braswell-6.1 
-      arch-comcerto2k-6.1 
-      arch-armadaxp-6.1
-      arch-hi3535-6.1 
-      arch-dockerx64-6.1 
-      arch-cedarview-6.1 
-      arch-armada375-6.1 
-      arch-rtd1296-6.1
-      arch-monaco-6.1 
-      arch-apollolake-6.1 
-      arch-bromolow-6.1 
-      arch-alpine-6.1 
-      arch-armada370-6.1
-      arch-evansport-6.1
+      ${{ each architecture in parameters.architectures }}:
+        $(architecture):
+          architecture: $(architecture) # !PARAMETER/VARIABLE FOR JOB SET HERE!
+
     maxParallel: 10
 
   pool:
@@ -52,8 +33,8 @@ jobs:
     - script: make setup
       displayName: 'make setup'
 
-    - script: make $(System.JobName) 
-      displayName: 'make $(System.JobName)'
+    - script: make $(architecture) 
+      displayName: 'make $(architecture)'
       workingDirectory: spk/urbackup
   
 
