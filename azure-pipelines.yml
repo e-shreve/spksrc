@@ -90,6 +90,7 @@ jobs:
         action: 'create'
         target: '$(Build.SourceVersion)'
         tagSource: 'gitTag'
+        tagPattern: '2.4.12'
         assets: '$(Build.Repository.LocalPath)/packages/*.spk'
         addChangeLog: false'
 
