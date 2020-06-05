@@ -92,6 +92,7 @@ jobs:
         tagSource: userSpecifiedTag
         tag: '2.4.12'
         assets: '$(Build.Repository.LocalPath)/packages/*.spk'
+        assetUploadMode: replace
         addChangeLog: false
 
 
