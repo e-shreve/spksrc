@@ -87,7 +87,7 @@ jobs:
       inputs:
         gitHubConnection: 'github'
         repositoryName: 'josef109/spksrc'
-        action: 'create'
+        action: edit
         target: '$(Build.SourceVersion)'
         tagSource: userSpecifiedTag
         tag: '2.4.12'
