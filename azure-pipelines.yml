@@ -1,6 +1,7 @@
 # see https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases
-parameters:
-  architectures: ["arch-qoriq-6.1", "arch-kvmx64-6.1", "arch-armv7-6.1"]
+#parameters:
+
+#  architectures: ['arch-qoriq-6.1', 'arch-kvmx64-6.1', 'arch-armv7-6.1']
 
 jobs:
 
@@ -10,9 +11,12 @@ jobs:
   timeoutInMinutes: 0
   strategy:
     matrix: 
-      ${{ each architecture in parameters.architectures }}:
-        $(architecture):
-          architecture: $(architecture) # !PARAMETER/VARIABLE FOR JOB SET HERE!
+      parameters:
+        architectur: ['arch-qoriq-6.1', 'arch-kvmx64-6.1', 'arch-armv7-6.1']
+
+#      ${{ each architecture in parameters.architectures }}:
+#        ${{ architecture }}:
+#          architecture: ${{ architecture }} # !PARAMETER/VARIABLE FOR JOB SET HERE!
 
     maxParallel: 10
 
@@ -33,8 +37,8 @@ jobs:
     - script: make setup
       displayName: 'make setup'
 
-    - script: make $(architecture) 
-      displayName: 'make $(architecture)'
+    - script: make $(architectur) 
+      displayName: 'make $(architectur)'
       workingDirectory: spk/urbackup
   
 
