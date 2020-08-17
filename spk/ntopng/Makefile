@@ -1,14 +1,14 @@
 SPK_NAME = ntopng
 SPK_VERS = 3.8.1
-SPK_REV = 1
+SPK_REV = 2
 SPK_ICON = src/$(SPK_NAME).png
 
 DEPENDS = cross/$(SPK_NAME)
 
 SPK_DEPENDS = "redis"
 
-# toolchains of DSM <=5.2 have outdated compiler
-REQUIRED_DSM = 6.1
+# toolchains of DSM <=5.2 have outdated compiler (PPC archs except qoriq)
+UNSUPPORTED_ARCHS = powerpc ppc824x ppc853x ppc854x
 
 MAINTAINER = hgy59
 DESCRIPTION = ntopng is the next generation version of the original ntop, a network traffic probe that monitors network usage. ntopng is based on libpcap and it has been written in a portable way in order to virtually run on every Unix platform, MacOSX and on Windows as well.
@@ -18,7 +18,6 @@ DISPLAY_NAME = ntopng
 
 HELPURL = https://www.ntop.org/guides/ntopng/index.html
 LICENSE = GNU GPLv3
-
 
 # 'auto' (reserved value) grabs SPK_NAME
 SERVICE_USER   = auto

@@ -15,9 +15,10 @@ RUN = cd $(WORK_DIR)/$(PKG_DIR) && env $(ENV)
 
 # Pip command
 PIP ?= pip
-# Why ask for the same thing twice?  Always cache downloads
+# Why ask for the same thing twice? Always cache downloads
 PIP_CACHE_OPT ?= --cache-dir $(PIP_DIR)
-PIP_WHEEL = $(PIP) wheel --no-binary :all: $(PIP_CACHE_OPT) --no-deps --requirement $(WORK_DIR)/wheelhouse/requirements.txt --wheel-dir $(WORK_DIR)/wheelhouse --build-dir $(WORK_DIR)/wheelbuild
+PIP_WHEEL_ARGS = wheel --no-binary :all: $(PIP_CACHE_OPT) --no-deps --requirement $(WORK_DIR)/wheelhouse/requirements.txt --wheel-dir $(WORK_DIR)/wheelhouse -b $(WORK_DIR)/wheelbuild
+PIP_WHEEL = $(PIP) $(PIP_WHEEL_ARGS)
 
 # Available languages
 LANGUAGES = chs cht csy dan enu fre ger hun ita jpn krn nld nor plk ptb ptg rus spn sve trk
@@ -32,8 +33,8 @@ LEGACY_ARCHS = $(sort $(filter-out $(SUPPORTED_ARCHS), $(AVAILABLE_ARCHS)))
 # SRM - Synology Router Manager
 SRM_ARCHS = northstarplus ipq806x dakota
 
-# Use x64 when kernels are not needed
-ARCHS_NO_KRNLSUPP = $(filter-out x64%, $(SUPPORTED_ARCHS))
+# Use generic archs when kernels are not needed
+ARCHS_NO_KRNLSUPP = $(filter-out x64% armv7% aarch64%, $(SUPPORTED_ARCHS))
 
 # remove archs for generic x64 build
 ARCHS_DUPES := $(filter-out apollolake% avoton% braswell% broadwell% broadwellnk% bromolow% cedarview% denverton% dockerx64% geminilake% grantley% purley% kvmx64% x86% x86_64%, $(SUPPORTED_ARCHS))
@@ -69,6 +70,6 @@ else
 NCPUS = $(PARALLEL_MAKE)
 endif
 ifeq ($(filter $(NCPUS),0 1),)
-COMPILE_MAKE_OPTIONS = -j$(NCPUS)
+COMPILE_MAKE_OPTIONS += -j$(NCPUS)
 endif
 endif

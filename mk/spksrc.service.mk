@@ -246,3 +246,4 @@ service_target: $(PRE_SERVICE_TARGET) $(SERVICE_FILES)
 post_service_target: $(SERVICE_TARGET)
 
 service: $(POST_SERVICE_TARGET)
+

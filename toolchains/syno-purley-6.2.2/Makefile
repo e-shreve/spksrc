@@ -2,7 +2,8 @@ TC_NAME = syno-$(TC_ARCH)
 
 TC_ARCH = purley
 TC_VERS = 6.2.2
-TC_OS_MIN_VER = 6.2-25023
+TC_OS_MIN_VER = 6.2.2-24922
+TC_KERNEL = 4.4.59+
 
 TC_DIST = purley-gcc493_glibc220_linaro_x86_64-GPL
 TC_EXT = txz
@@ -19,4 +20,10 @@ TC_CXXFLAGS = -I$(WORK_DIR)/$(TC_BASE_DIR)/$(TC_BASE_DIR)/sys-root/usr/include
 TC_LIBDIR = $(TC_BASE_DIR)/sys-root/lib
 TC_LDFLAGS = -L$(WORK_DIR)/$(TC_BASE_DIR)/$(TC_LIBDIR)
 
+FIX_TARGET = myFix
+
 include ../../mk/spksrc.tc.mk
+
+.PHONY: myFix
+myFix:
+	chmod -R u+w $(WORK_DIR)
