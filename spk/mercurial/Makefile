@@ -1,6 +1,6 @@
 SPK_NAME = mercurial
 SPK_VERS = 4.8.1
-SPK_REV = 5
+SPK_REV = 6
 SPK_ICON = src/mercurial.png
 
 BUILD_DEPENDS = cross/python cross/setuptools cross/pip cross/wheel cross/$(SPK_NAME)
@@ -13,7 +13,7 @@ STARTABLE = no
 DISPLAY_NAME = Mercurial
 CHANGELOG = Update to 4.8.1
 
-HOMEPAGE = http://mercurial.selenic.com/
+HOMEPAGE = https://www.mercurial-scm.org/
 LICENSE  = MPL1.1
 
 INSTALLER_SCRIPT = src/installer.sh
