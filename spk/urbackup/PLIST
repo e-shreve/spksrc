@@ -17,6 +17,6 @@ lnk:lib/libssl.so
 lnk:lib/libz.so
 lnk:lib/libz.so.1
 rsc:bin/c_rehash
-rsc:cert.pem
-rsc:openssl.cnf
+rsc:apps/cert.pem
+rsc:apps/openssl.cnf
 rsc:share/urbackup
